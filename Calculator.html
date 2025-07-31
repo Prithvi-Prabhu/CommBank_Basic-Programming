@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<!--July 2nd-->
+
+<html lang="en">
+<head>
+    <title>Simple Calculator</title>
+
+    <!-- JavaScript functions for calculator operations -->
+    <script>
+        // Function to add two numbers
+        function addNum() {
+            // Get values from input fields and convert to numbers
+            var num1 = Number(document.getElementById("num1").value);
+            var num2 = Number(document.getElementById("num2").value);
+
+            // Calculate sum
+            var sum = num1 + num2;
+
+            // Display result in the paragraph with id 'result'
+            document.getElementById("result").innerText = "Sum: " + sum;
+        }
+
+        // Function to subtract second number from the first
+        function subNum() {
+            // Get values from input fields and convert to numbers
+            var num1 = Number(document.getElementById("num1").value);
+            var num2 = Number(document.getElementById("num2").value);
+
+            // Calculate difference
+            var diff = num1 - num2;
+
+            // Display result in the paragraph with id 'result'
+            document.getElementById("result").innerText = "Difference: " + diff;
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Input for first number -->
+    <input type="number" id="num1" placeholder="Enter first number"><br>
+
+    <!-- Input for second number -->
+    <input type="number" id="num2" placeholder="Enter second number"><br>
+
+    <!-- Button to perform addition -->
+    <button onclick="addNum();">Add Numbers</button>
+
+    <!-- Button to perform subtraction -->
+    <button onclick="subNum();">Subtract Numbers</button><br>
+
+    <!-- Paragraph to display result -->
+    <p id="result">

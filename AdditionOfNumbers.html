@@ -1,0 +1,40 @@
+<!-- July 2nd -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Numbers</title>
+
+    <!-- Inline JavaScript to handle number addition -->
+    <script>
+        function addNum() {
+            // Get the value from input #num1 and convert it to a Number
+            var num1 = Number(document.getElementById("num1").value);
+
+            // Get the value from input #num2 and convert it to a Number
+            var num2 = Number(document.getElementById("num2").value);
+
+            // Add both numbers
+            var sum = num1 + num2;
+
+            // Display the result inside the <p> tag with id="result"
+            document.getElementById("result").innerText = "Sum: " + sum;
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Input field for the first number -->
+    <input type="number" id="num1" placeholder="Enter first number">
+
+    <!-- Input field for the second number -->
+    <input type="number" id="num2" placeholder="Enter second number">
+
+    <!-- Button that triggers the addNum() function when clicked -->
+    <button onclick="addNum();">Add Numbers</button>
+
+    <!-- Paragraph to display the result -->
+    <p id="result"></p>
+</body>
+</html>

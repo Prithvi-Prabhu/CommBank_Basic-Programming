@@ -1,0 +1,34 @@
+<!-- July 2nd -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Live Character Counter</title>
+
+    <!-- JavaScript function to count characters -->
+    <script>
+        function countChar() {
+            // Get the text input value and remove leading/trailing whitespace
+            var str = document.getElementById("characters").value.trim();
+
+            // Get the length of the trimmed string
+            var num = str.length;
+
+            // Update the <p> tag with the character count
+            document.getElementById("count").innerText = "Character Count: " + num;
+        }
+    </script>
+</head>
+
+<body>
+    <!-- Text input that triggers countChar() on every input change -->
+    <input 
+        type="text" 
+        id="characters" 
+        oninput="countChar()" 
+        placeholder="Enter your characters here"
+    >
+
+    <!-- Paragraph to show the live character count -->
+    <p id="count">Character Count: 0</p>
+</body>
+</html>
