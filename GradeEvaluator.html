@@ -1,0 +1,31 @@
+<!--July 3rd-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Grade Evaluator</title>
+  <script>
+    // Initialize score
+    const score = 90;
+
+    // Determine grade using if-else chain
+    let gradeMessage = "";
+
+    if (score < 45) {
+      gradeMessage = "Fail";
+    } else if (score < 70) {
+      gradeMessage = "Grade C";
+    } else if (score < 85) {
+      gradeMessage = "Grade B";
+    } else {
+      gradeMessage = "Grade A";
+    }
+
+    // Log the grade to the console
+    console.log(`Student's Grade: ${gradeMessage}`);
+  </script>
+</head>
+<body>
+  <!-- Grade is only shown in console -->
+</body>
+</html>
