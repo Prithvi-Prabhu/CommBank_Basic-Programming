@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library User Registration</title>
+    <style>
+        body {
+            font-family: "Times New Roman", Times, serif;
+            margin: 20px;
+            background-color: #f8f8f8;
+        }
+        form {
+            max-width: 600px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            padding: 8px;
+            font-family: "Times New Roman", Times, serif;
+        }
+        .error {
+            color: red;
+            font-size: 0.85em;
+        }
+        button {
+            padding: 10px 20px;
+            font-family: "Times New Roman", Times, serif;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h2>📚 Library User Registration</h2>
+<form id="libraryForm" onsubmit="return validateForm()">
+    
+    <!-- Basic Info -->
+    <div class="form-group">
+        <label>Full Name:</label>
+        <input type="text" id="fullName" />
+        <div class="error" id="nameError"></div>
+    </div>
+
+    <div class="form-group">
+        <label>Email:</label>
+        <input type="email" id="email" />
+        <div class="error" id="emailError"></div>
+    </div>
+
+    <div class="form-group">
+        <label>Mobile Number:</label>
+        <input type="text" id="mobile" />
+        <div class="error" id="mobileError"></div>
+    </div>
+
+    <div class="form-group">
+        <label>Password:</label>
+        <input type="password" id="password" />
+        <div class="error" id="passwordError"></div>
+    </div>
+
+    <!-- Gender -->
+    <div class="form-group">
+        <label>Gender:</label>
+        <input type="radio" name="gender" value="Male" /> Male
+        <input type="radio" name="gender" value="Female" /> Female
+        <input type="radio" name="gender" value="Other" /> Other
+        <div class="error" id="genderError"></div>
+    </div>
+
+    <!-- Fun Fields -->
+    <div class="form-group">
+        <label>If You Could Be Any Book Character, Who Would You Be?</label>
+        <input type="text" id="bookCharacter" />
+    </div>
+
+    <div class="form-group">
+        <label>Reading Superpower:</label>
+        <select id="readingSuperpower">
+            <option value="">--Select--</option>
+            <option value="speedReading">Speed Reading</option>
+            <option value="photoMemory">Photographic Memory</option>
+            <option value="bookWhisperer">Book Whisperer</option>
+            <option value="readInStorm">Can Read in a Hurricane</option>
+        </select>
+        <div class="error" id="superpowerError"></div>
+    </div>
+
+    <div class="form-group">
+        <label>Preferred Reading Time:</label>
+        <input type="radio" name="readingTime" value="Morning" /> Morning
+        <input type="radio" name="readingTime" value="Afternoon" /> Afternoon
+        <input type="radio" name="readingTime" value="Night Owl" /> Night Owl
+        <div class="error" id="readingTimeError"></div>
+    </div>
+
+    <div class="form-group">
+        <label>Favorite Book Genre:</label>
+        <input type="checkbox" name="genres" value="Mystery" /> Mystery
+        <input type="checkbox" name="genres" value="Fantasy" /> Fantasy
+        <input type="checkbox" name="genres" value="Romance" /> Romance
+        <input type="checkbox" name="genres" value="Sci-Fi" /> Sci-Fi
+        <div class="error" id="genreError"></div>
+    </div>
+
+    <div class="form-group">
+        <label>
+            <input type="checkbox" id="terms" /> I accept the Library Rules & Terms
+        </label>
+        <div class="error" id="termsError"></div>
+    </div>
+
+    <button type="submit">Register</button>
+</form>
+
+<script>
+function validateForm() {
+    let valid = true;
+
+    // Clear previous errors
+    document.querySelectorAll('.error').forEach(e => e.innerText = "");
+
+    const name = document.getElementById("fullName").value.trim();
+    if (name.length < 3) {
+        document.getElementById("nameError").innerText = "Enter a valid full name (min 3 chars)";
+        valid = false;
+    }
+
+    const email = document.getElementById("email").value.trim();
+    const emailPattern = /^[a-zA-Z0-9._]+@[a-zA-Z0-9.-]+\.[a-z]{2,}$/;
+    if (!emailPattern.test(email)) {
+        document.getElementById("emailError").innerText = "Enter a valid email";
+        valid = false;
+    }
+
+    const mobile = document.getElementById("mobile").value.trim();
+    const mobilePattern = /^[6-9]\d{9}$/;
+    if (!mobilePattern.test(mobile)) {
+        document.getElementById("mobileError").innerText = "Enter a valid 10-digit mobile number";
+        valid = false;
+    }
+
+    const password = document.getElementById("password").value;
+    if (password.length < 6) {
+        document.getElementById("passwordError").innerText = "Password must be at least 6 characters";
+        valid = false;
+    }
+
+    const gender = document.querySelector('input[name="gender"]:checked');
+    if (!gender) {
+        document.getElementById("genderError").innerText = "Please select your gender";
+        valid = false;
+    }
+
+    const superpower = document.getElementById("readingSuperpower").value;
+    if (superpower === "") {
+        document.getElementById("superpowerError").innerText = "Choose a reading superpower!";
+        valid = false;
+    }
+
+    const readingTime = document.querySelector('input[name="readingTime"]:checked');
+    if (!readingTime) {
+        document.getElementById("readingTimeError").innerText = "Select your reading time";
+        valid = false;
+    }
+
+    const genres = document.querySelectorAll('input[name="genres"]:checked');
+    if (genres.length === 0) {
+        document.getElementById("genreError").innerText = "Select at least one genre";
+        valid = false;
+    }
+
+    const terms = document.getElementById("terms").checked;
+    if (!terms) {
+        document.getElementById("termsError").innerText = "You must accept the terms";
+        valid = false;
+    }
+
+    return valid;
+}
+</script>
+
+</body>
+</html>
